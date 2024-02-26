@@ -69,6 +69,22 @@ MonoBehaviour:
     m_Key: Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 40962992004329472
+    m_Key: GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40963187257569280
+    m_Key: YouWIn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40967836396089344
+    m_Key: GameTitleName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40973386009735168
+    m_Key: Pause
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

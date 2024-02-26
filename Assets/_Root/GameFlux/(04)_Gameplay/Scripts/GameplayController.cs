@@ -94,12 +94,25 @@ public class GameplayController : SceneDataOperator<GameplayStruct>
             {
                 Pause();
             }
+
+            if (keyboard.aKey.wasPressedThisFrame)
+            {
+                GameOver();
+            }
+
+            if (keyboard.bKey.wasPressedThisFrame)
+            {
+                Win();
+            }
         }
     }
 
     private void Pause()
     {
         if (lockScene)
+            return;
+
+        if (SceneManager.GetSceneByName("GameOver").isLoaded)
             return;
 
         lockScene = true;
@@ -110,6 +123,38 @@ public class GameplayController : SceneDataOperator<GameplayStruct>
             {
 
             }, PauseController.SCENE_NAME, LoadSceneMode.Additive);
+        });
+    }
+
+    private void GameOver()
+    {
+        if (lockScene)
+            return;
+
+        lockScene = true;
+
+        ControllerTools.SetTransitionOut(() =>
+        {
+            GameOverController.OpenScene(new GameOverStruct
+            {
+
+            }, GameOverController.SCENE_NAME, LoadSceneMode.Additive);
+        });
+    }
+
+    private void Win()
+    {
+        if (lockScene)
+            return;
+
+        lockScene = true;
+
+        ControllerTools.SetTransitionOut(() =>
+        {
+            WinController.OpenScene(new WinStruct
+            {
+
+            }, WinController.SCENE_NAME, LoadSceneMode.Additive);
         });
     }
 
