@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class GameSettingsController : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         SetupGameSettings();
     }

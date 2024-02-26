@@ -59,6 +59,18 @@ MonoBehaviour:
     m_Localized: Credits
     m_Metadata:
       m_Items: []
+  - m_Id: 40940445539954688
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40940479144718336
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40940505916960768
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

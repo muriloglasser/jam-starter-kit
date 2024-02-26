@@ -8,9 +8,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"picker_window_position_offset.45F317DD" = "10,3999;-43,2;320;532,8"
-	"picker_search_text.45F317DD" = "cre"
-	"last_search.45F317DD" = "cre"
+	"picker_window_position_offset.45F317DD" = "10,40002;-43,2;320;532,8"
+	"picker_search_text.45F317DD" = "menu"
+	"last_search.45F317DD" = "menu"
 	"OpenInspectorPreview.45F317DD" = "0"
 	"currentGroup.45F317DD" = "all"
 }

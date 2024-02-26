@@ -1,5 +1,7 @@
 using EntityCreator;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -16,6 +18,16 @@ public class GameplayController : SceneDataOperator<GameplayStruct>
 
     #region Unity Metods
 
+    private void OnEnable()
+    {
+        EventDispatcher.RegisterObserver<ResumeStruct>(Resume);
+    } 
+
+    private void OnDisable()
+    {
+        EventDispatcher.UnregisterObserver<ResumeStruct>(Resume);
+    }
+
     private void Awake()
     {
         ControllerTools.SetTransitionIn(() =>
@@ -25,7 +37,7 @@ public class GameplayController : SceneDataOperator<GameplayStruct>
                 soundName = "Gameplay"
             });
             lockScene = false;
-        });       
+        });
     }
 
     /// <summary>
@@ -35,7 +47,20 @@ public class GameplayController : SceneDataOperator<GameplayStruct>
     public override void Initialize(GameplayStruct data)
     {
         SetUpButtonActions();
-        uiGameplay.Initialize();
+        uiGameplay.Initialize(gameSettings);
+    }
+
+    private void Update()
+    {
+        KeyboardAndGamepadCheck();
+    }
+
+    private void Resume(ResumeStruct obj)
+    {
+        ControllerTools.SetTransitionIn(() =>
+        {         
+            lockScene = false;
+        });
     }
 
     /// <summary>
@@ -43,39 +68,51 @@ public class GameplayController : SceneDataOperator<GameplayStruct>
     /// </summary>
     public void SetUpButtonActions()
     {
-        /*uiGameplay.backToMenuButtonClicked = () =>
+        uiGameplay.pauseButtonClicked = () =>
         {
-            if (lockScene)
-                return;
+            Pause();
+        };
+    }
 
-            lockScene = true;
+    private void KeyboardAndGamepadCheck()
+    {
+        Keyboard keyboard = Keyboard.current;
+        Gamepad gamepad = Gamepad.current;
 
-            ControllerTools.SetTransitionOut(() =>
+        // Checks gamepad input.
+        if (gamepad != null)
+        {
+            if (gamepad.startButton.wasPressedThisFrame)
             {
-                EventDispatcher.Dispatch<StopAudioStruct>(new StopAudioStruct
-                {
-                    soundName = "Gameplay"
-                });
+                Pause();
+            }
+        }
+        // Checks keyboard input.
+        else if (keyboard != null)
+        {
+            if (keyboard.escapeKey.wasPressedThisFrame)
+            {
+                Pause();
+            }
+        }
+    }
 
-                LoadingController.OpenScene(new LoadingStruct
-                {
-                    sceneToLoad = () =>
-                    {
-                        MenuController.OpenScene(new MenuStruct
-                        {
+    private void Pause()
+    {
+        if (lockScene)
+            return;
 
-                        }, MenuController.SCENE_NAME, LoadSceneMode.Additive);
-                    }
+        lockScene = true;
 
-                }, LoadingController.SCENE_NAME, LoadSceneMode.Additive);
-                GameplayController.HideScene(GameplayController.SCENE_NAME);
-            });
+        ControllerTools.SetTransitionOut(() =>
+        {
+            PauseController.OpenScene(new PauseStruct
+            {
 
-          
-        };*/
+            }, PauseController.SCENE_NAME, LoadSceneMode.Additive);
+        });
     }
 
     #endregion
-
 }
 

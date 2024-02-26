@@ -39,12 +39,12 @@ public class UIPause : MonoBehaviour
 
         restartButton.ButtonClick((baseEventData) =>
         {
-            resumeButtonClicked?.Invoke();
+            restartButtonClicked?.Invoke();
         });
 
         menuButton.ButtonClick((baseEventData) =>
          {
-             resumeButtonClicked?.Invoke();
+             menuButtonClicked?.Invoke();
          });
     }
 
