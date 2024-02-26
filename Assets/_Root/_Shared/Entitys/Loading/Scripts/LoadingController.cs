@@ -16,11 +16,6 @@ public class LoadingController : SceneDataOperator<LoadingStruct>
     [SerializeField] private LoadingData loadingData; 
     private bool transitionIsDone = false; 
     private bool saveIsProcessing = false; 
-    private bool SaveIsProcessing
-    {
-        get { return SaveController.saveController.isProcessing; }
-        set { saveIsProcessing = SaveController.saveController.isProcessing; }
-    }
 
     #endregion
 

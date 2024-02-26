@@ -12,16 +12,16 @@ EditorBuildSettings:
     path: Assets/Plugins/EntityCreator/Runtime/Entitys/Transition/_Scene/Transition.unity
     guid: 183731903b3d05942a48a0f5b692ff80
   - enabled: 1
-    path: Assets/_Root/GameFlux/(03)_PressToStart/_Scene/PressToStart.unity
+    path: Assets/_Root/GameFlux/(02)_PressToStart/_Scene/PressToStart.unity
     guid: 41b74541a105d084695692652bc5429b
   - enabled: 1
     path: Assets/_Root/GameFlux/(02)_AutoSave/_Scene/AutoSave.unity
     guid: b50bcbd1b7160844fb41c7d662965c5a
   - enabled: 1
-    path: Assets/_Root/GameFlux/(04)_Menu/_Scene/Menu.unity
+    path: Assets/_Root/GameFlux/(03)_Menu/_Scene/Menu.unity
     guid: a2f2b4e7a9c7efb41b3805cdd40dc9a6
   - enabled: 1
-    path: Assets/_Root/GameFlux/(05)_Gameplay/_Scene/Gameplay.unity
+    path: Assets/_Root/GameFlux/(04)_Gameplay/_Scene/Gameplay.unity
     guid: 11dc46f4769f2f340953801e3a95b760
   - enabled: 1
     path: Assets/_Root/_Shared/Entitys/Loading/_Scene/Loading.unity

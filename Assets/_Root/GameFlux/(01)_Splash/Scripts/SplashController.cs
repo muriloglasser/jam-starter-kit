@@ -58,7 +58,7 @@ public class SplashController : SceneDataOperator<SplashStruct>
             {
                 soundName = "DopaminSplash"
             });
-            AutoSaveController.OpenScene(AutoSaveController.SCENE_NAME, LoadSceneMode.Additive);
+            PressToStartController.OpenScene(PressToStartController.SCENE_NAME, LoadSceneMode.Additive);
             SplashController.HideScene(SplashController.SCENE_NAME);
             TransitionController.HideScene(TransitionController.SCENE_NAME);
         });      

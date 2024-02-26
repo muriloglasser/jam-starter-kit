@@ -19,6 +19,11 @@ namespace EntityCreator
         public static AsyncOperation asyncOperation;
 
         /// <summary>
+        /// Current game settings.
+        /// </summary>
+        public static GameSettingsStruct gameSettings;
+
+        /// <summary>
         /// Opens a Unity scene by name with optional loading mode and duplicate scene handling.
         /// </summary>
         /// <param name="sceneName">The name of the scene to load.</param>
@@ -39,6 +44,9 @@ namespace EntityCreator
                     // If the scene is already loaded, return true to indicate success.
                     if (scene.isLoaded) return true;
                 }
+
+                //Get game settings struct
+                gameSettings = DataManager.GetData<GameSettingsStruct>();
 
                 // Load the scene asynchronously with the specified mode.
                 SceneManager.LoadSceneAsync(sceneName, mode);
@@ -62,22 +70,22 @@ namespace EntityCreator
             }
         }
 
-    /*    public void SetTransitionIn(Action onTransitionEnd)
-        {
-            TransitionController.OpenScene(new TransitionStruct
+        /*    public void SetTransitionIn(Action onTransitionEnd)
             {
-                fadeType = FadeType.Out,
-                onTransitionEnd = () =>
+                TransitionController.OpenScene(new TransitionStruct
                 {
-                    EventDispatcher.Dispatch<PlayAudioStruct>(new PlayAudioStruct
+                    fadeType = FadeType.Out,
+                    onTransitionEnd = () =>
                     {
-                        soundName = "Menu"
-                    });
-                    lockScene = false;
-                    TransitionController.HideScene(TransitionController.SCENE_NAME);
-                }
+                        EventDispatcher.Dispatch<PlayAudioStruct>(new PlayAudioStruct
+                        {
+                            soundName = "Menu"
+                        });
+                        lockScene = false;
+                        TransitionController.HideScene(TransitionController.SCENE_NAME);
+                    }
 
-            }, TransitionController.SCENE_NAME, LoadSceneMode.Additive);
-        }*/
+                }, TransitionController.SCENE_NAME, LoadSceneMode.Additive);
+            }*/
     }
 }

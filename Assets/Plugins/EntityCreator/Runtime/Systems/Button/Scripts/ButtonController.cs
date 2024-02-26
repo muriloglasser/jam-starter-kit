@@ -62,9 +62,31 @@ namespace EntityCreator
         {
             EventSystem.current.SetSelectedGameObject(gameObject);
         }
+
+        /// <summary>
+        /// Set first button selected if device plataform is desktop or web && desktop.
+        /// </summary>
         public void SetAsFirstButtonSelected()
         {
-            OnPointerEnter(new BaseEventData(EventSystem.current));
+            GameSettingsStruct gameSettings = DataManager.GetData<GameSettingsStruct>();
+
+            switch (gameSettings.targetDevice)
+            {
+                case GameDevice.NONE:
+                    break;
+                case GameDevice.WEB_AND_MOBILE:
+                    break;
+                case GameDevice.WEB_AND_DESKTOP:
+                    OnPointerEnter(new BaseEventData(EventSystem.current));
+                    break;
+                case GameDevice.DESKTOP:
+                    OnPointerEnter(new BaseEventData(EventSystem.current));
+                    break;
+                case GameDevice.MOBILE:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void ButtonClick(UnityAction<BaseEventData> onClick)
